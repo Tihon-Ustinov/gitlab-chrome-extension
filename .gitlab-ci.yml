@@ -1,0 +1,19 @@
+image: node:latest
+
+stages:
+  - build
+
+cache:
+  paths:
+    - node_modules/
+
+build_extensions:
+  stage: build
+  script:
+    - npm install
+    - npm run build
+    - npm run build-zip
+  artifacts:
+    name: "dist"
+    paths:
+      - dist/
